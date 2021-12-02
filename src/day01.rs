@@ -27,3 +27,19 @@ pub fn part1(inp: String) {
 
     println!("{}", res);
 }
+
+pub fn part2(inp: String) {
+    let depths = inp
+        .lines()
+        .map(str::parse)
+        .collect::<Result<Vec<usize>, _>>()
+        .unwrap();
+
+    let res = depths
+        .windows(3)
+        .map(|window| window.iter().sum())
+        .fold((None, 0), greater_than_previous)
+        .1;
+
+    println!("{}", res)
+}
