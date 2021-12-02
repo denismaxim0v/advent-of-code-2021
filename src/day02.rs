@@ -50,3 +50,31 @@ pub fn part1(inp: String) {
 
     println!("{}", (depth * position));
 }
+
+pub fn part2(inp: String) {
+
+    let mut commands: Vec<Command> = vec![];
+
+    let raw_commands: Vec<&str> = inp.lines().collect();
+
+    for command in raw_commands {
+        commands.push(parse_command(command));
+    }
+
+    let mut depth = 0;
+    let mut position = 0;
+    let mut aim = 0;
+
+    for command in commands {
+        match command.direction {
+            Direction::Up => aim -= command.val,
+            Direction::Down => aim += command.val,
+            Direction::Forward => {
+                position += command.val;
+                depth += aim * command.val;
+            }
+        }
+    }
+
+    println!("{}", (depth * position));
+}
