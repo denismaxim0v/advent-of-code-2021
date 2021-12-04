@@ -43,3 +43,25 @@ pub fn part1(inp: String) {
     let epsilon = !gamma & 0xfff;
     println!("{}", gamma * epsilon);
 }
+
+pub fn part2(inp: String) {
+    let rating = |most_common: bool| -> u32 {
+        let mut input: Vec<_> = inp.lines().collect();
+        let mut col = 0;
+        while input.len() > 1 {
+            let ones = input.iter().filter(|l| l.as_bytes()[col] == b'1').count();
+            let bit = match (most_common, ones * 2 >= input.len()) {
+                (true, true) | (false, false) => b'1',
+                _ => b'0',
+            };
+            input = input
+                .into_iter()
+                .filter(|l| l.as_bytes()[col] == bit)
+                .collect();
+            col += 1;
+        }
+        u32::from_str_radix(input.first().ok_or("empty").unwrap(), 2).unwrap()
+    };
+    let (oxygen, co2) = (rating(true), rating(false));
+    println!("{}", oxygen * co2)
+}

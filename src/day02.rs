@@ -28,7 +28,6 @@ fn parse_direction(dir: &str) -> Direction {
 }
 
 pub fn part1(inp: String) {
-
     let mut commands: Vec<Command> = vec![];
 
     let raw_commands: Vec<&str> = inp.lines().collect();
@@ -52,7 +51,6 @@ pub fn part1(inp: String) {
 }
 
 pub fn part2(inp: String) {
-
     let mut commands: Vec<Command> = vec![];
 
     let raw_commands: Vec<&str> = inp.lines().collect();
