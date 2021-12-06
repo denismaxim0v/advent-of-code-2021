@@ -11,19 +11,19 @@ impl Line {
         if self.x1 != self.x2 && self.y1 != self.y2 {
             return map;
         }
-        let (minx, maxx) = if self.x1 > self.x2 {
+        let (min_x, max_x) = if self.x1 > self.x2 {
             (self.x2, self.x1 + 1)
         } else {
             (self.x1, self.x2 + 1)
         };
-        let (miny, maxy) = if self.y1 > self.y2 {
+        let (min_y, max_y) = if self.y1 > self.y2 {
             (self.y2, self.y1 + 1)
         } else {
             (self.y1, self.y2 + 1)
         };
 
-        for x in minx..maxx {
-            for y in miny..maxy {
+        for x in min_x..max_x {
+            for y in min_y..max_y {
                 map[y][x] += 1;
             }
         }
