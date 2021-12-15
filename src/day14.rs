@@ -37,15 +37,15 @@ pub fn parse_inp(inp: &String) -> (&str, HashMap<String, char>) {
     for rule in rule_slice.iter() {
         let split = rule.split(" -> ").collect::<Vec<_>>();
         rules.insert(split[0].to_string(), split[1].chars().next().unwrap());
-    };
+    }
     (start, rules)
 }
 
 pub fn part1(inp: String) {
     let (start, rules) = parse_inp(&inp);
-    solve(start, &rules, 10); 
+    solve(start, &rules, 10);
 }
 pub fn part2(inp: String) {
-   let (start, rules) = parse_inp(&inp);
-    solve(start, &rules, 40); 
+    let (start, rules) = parse_inp(&inp);
+    solve(start, &rules, 40);
 }
