@@ -45,9 +45,9 @@ pub fn part1(inp: String) {
 
             if hit(vx, vy).is_some() {
                 max_vy_hit = Some(match max_vy_hit {
-					Some(current) => current.max(vy),
-					None => vy,
-				})
+                    Some(current) => current.max(vy),
+                    None => vy,
+                })
             }
         }
     }
